@@ -13,14 +13,15 @@ public:
 
             int times = num / val[i];
 
-            while(times--) {
+            while(times > 0) {
                 result += sym[i];
+                times--;
             }
 
             num %= val[i];
         }
 
         return result;
-        
+
     }
 };
