@@ -7,13 +7,7 @@ public:
 
         if( m != n ) return false;
 
-        for(int count = 1; count <= n; count++) {
-
-            rotate(begin(s), begin(s) + 1, end(s));
-
-            if(s == goal) return true;
-
-        }
+        if((s+s).find(goal) != string::npos) return true;
 
         return false;
         
