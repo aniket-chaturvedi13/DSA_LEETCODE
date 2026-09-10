@@ -8,26 +8,20 @@ public:
 
         string result = "";
 
-        int i = 0, j = 0;
+        int j = 0;
 
-        while(i < m && j < n) {
+        for(int i = 0; i < m; i++) {
 
-            if(i == spaces[j]) {
+            if(j < n && i == spaces[j]) {
                 result += ' ';
-                result += s[i];
                 j++;
             }
-            else {
-                result += s[i];
-            }
-            i++;
-        }
 
-        while(i < m) {
             result += s[i];
-            i++;
+
         }
 
         return result;
+
     }
 };
