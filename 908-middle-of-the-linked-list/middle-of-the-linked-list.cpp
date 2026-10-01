@@ -11,14 +11,14 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        int n = 0;
+        int n = 0; // Length of the linkedList
         ListNode* temp = head;
         while(temp != nullptr) {
             temp = temp -> next;
             n++;
         }
 
-        for(int i = 1; i < (n/2 + 1); i++) {
+        for(int i = 1; i <= (n/2); i++) {
             head = head -> next;
         }
 
