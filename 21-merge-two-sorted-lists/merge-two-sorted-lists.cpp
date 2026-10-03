@@ -9,19 +9,16 @@ public:
         while(a != NULL && b != NULL) {
             if(a->val < b->val) {
                 c->next = a;
-                c = a;
                 a = a->next;
             }
             else {
                 c->next = b;
-                c = b;
                 b = b->next;
             }
+            c = c->next;
         }
         
-        if(a != NULL) {
-            c->next = a;
-        }
+        if(a != NULL) c->next = a;
         else c->next = b;
 
         return dummy->next;
