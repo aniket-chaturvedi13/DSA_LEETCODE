@@ -18,18 +18,13 @@ public:
                 b = b->next;
             }
         }
-        while(a != NULL) {
+        
+        if(a != NULL) {
             c->next = a;
-            c = a;
-            a = a->next;
         }
-        while(b != NULL) {
-            c->next = b;
-            c = b;
-            b = b->next;
-        }
+        else c->next = b;
 
         return dummy->next;
-        
+
     }
 };
