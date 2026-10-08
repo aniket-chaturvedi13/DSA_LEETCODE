@@ -10,29 +10,28 @@
  */
 class Solution {
 public:
-    int get_length(ListNode* head) {
-        ListNode* temp = head;
-        int n = 0;
-        while(temp != NULL) {
-            n++;
-            temp = temp->next;
-        }
-        return n;
-    }
     ListNode* removeNthFromEnd(ListNode* head, int n) {
 
-        int length = get_length(head);
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
 
-        if(length == n) return head->next;
+        ListNode* slow = dummy;
+        ListNode* fast = dummy;
 
-        ListNode* temp = head;
-
-        for(int i = 1; i < length-n; i++) {
-            temp = temp->next;
+        // Create a gap of n + 1 nodes
+        for(int i = 0; i <= n; i++) {
+            fast = fast->next;
         }
-        
-        temp->next = temp->next->next;
 
-        return head;
+        while(fast != NULL) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        ListNode* toDelete = slow->next;
+        slow->next = toDelete->next;
+
+        delete toDelete;
+        return dummy->next;
     }
 };
