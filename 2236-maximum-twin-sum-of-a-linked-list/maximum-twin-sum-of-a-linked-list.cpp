@@ -1,0 +1,42 @@
+class Solution {
+public:
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+
+        while(curr != NULL) {
+            ListNode* fwd = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = fwd;
+        }
+        return prev;
+    }
+    int pairSum(ListNode* head) {
+        ListNode* slow = head; 
+        ListNode* fast = head;
+
+        //in case of odd reach at middle
+        //in case of even reach at left middle
+        while(fast->next != NULL and fast->next->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* a = head; 
+        ListNode* b = slow->next;
+        slow->next = NULL;
+        b = reverse(b);
+
+        int max_sum = INT_MIN;
+        while(a != NULL) {
+            max_sum = max(max_sum, a->val + b->val);
+            a = a->next;
+            b = b->next;
+        }
+
+        slow->next = reverse(b);
+
+        return max_sum;
+    }
+};
